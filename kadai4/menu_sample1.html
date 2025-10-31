@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>リストサンプル</title>
+</head>
+
+<style type="text/css">
+	ul.ddmenu{
+		margin:0px;
+		padding:0px 0px 0px 15px;
+		background-color:#cc0000;
+	}
+	ul.ddmenu li{
+		width:125px;
+		display:inline-block;
+		list-style-type:none;
+		position:relative;
+	}
+	ul.ddmenu a{
+		background-color:#cc0000;
+		color:white;
+		line-height:40px;
+		text-align:center;
+		text-decoration:none;
+		font-weight:bold;
+		display:block;
+	}
+	ul.ddmenu ul{
+		display:none;
+		margin:0px;
+		padding:0px;
+		position:absolute;
+	}
+	ul.ddmenu a:hover{
+		background-color:#FFDDDD;
+		color:#dd0000;
+	}
+	ul.ddmenu li:hover ul{
+		display:block;
+	}
+</style>
+	
+<body>
+<ul class="ddmenu">
+   <li><a href="#">HOME</a></li>
+   <li><a href="#">ニュース</a>
+      <ul>
+         <li><a href="#">新製品</a></li>
+         <li><a href="#">新サービス</a></li>
+         <li><a href="#">弊社について</a></li>
+      </ul>
+   </li>
+   <li><a href="#">製品・技術</a>
+      <ul>
+         <li><a href="#">ハードウェア</a></li>
+         <li><a href="#">ソフトウェア</a></li>
+         <li><a href="#">ウェブサービス</a></li>
+      </ul>
+   </li>
+   <li><a href="#">会社情報</a>
+      <ul>
+         <li><a href="#">会社概要</a></li>
+         <li><a href="#">社長挨拶</a></li>
+         <li><a href="#">沿革</a></li>
+         <li><a href="#">所在地</a></li>
+      </ul>
+   </li>
+   <li><a href="#">お問い合わせ</a>
+      <ul>
+         <li><a href="#">よくあるご質問</a></li>
+         <li><a href="#">お問い合わせ先</a></li>
+      </ul>
+   </li>
+</ul>
+</body>
+</html>
