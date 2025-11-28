@@ -1,0 +1,129 @@
+@charset "utf-8";
+ui.ddmenu
+
+main{
+    display: grid;
+    /* 2カラムで、コンテンツに応じて幅を調整 */
+    grid-template-columns: 1fr 1fr; 
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */ /* レスポンシブなグリッドの例 */
+    gap: 20px; /* グリッドアイテム間の隙間 */
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+/* グリッドアイテムの共通スタイル */
+.grid-item {
+    padding: 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f7f7f7; /* 背景色でアイテムを区切る */
+}
+
+/* 一部のアイテムを横幅いっぱいに使う場合 */
+#movie-section {
+    grid-column: 1 / -1; /* 1列目から最終列まで広げる */
+}
+
+/* =======================================
+   全体デザイン（配色・フォント計画）
+   ======================================= */
+/* 提供画像（外観、内装）からメインカラーを抽出 */
+:root {
+    --main-color: #FFF3D9; /* ナビゲーションの黄 */
+    --accent-color: #F89406; /* 外観のオレンジ */
+    --bg-color: #FFFFFF;
+    --text-color: #333333;
+    --font-serif: "Times New Roman", Times, serif; /* イタリアンらしいフォント */
+    --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+}
+
+/* タイトル・ロゴ（画像化）のスタイル */
+header {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px; /* パディングを調整 */
+    text-align: left; /* テキストは左寄せに */
+    display: flex;    /* flexboxでロゴとテキストを横に並べる */
+    align-items: center; /* 垂直方向中央寄せ */
+}
+
+#logo-container {
+    margin-right: 20px; /* テキストとの間にスペース */
+}
+
+#site-logo {
+    height: 100px; /* ロゴの高さを設定 (デザインに合わせて調整してください) */
+    width: auto;
+    display: block;
+}
+
+#header-text h1 {
+    font-size: 2em;
+    margin: 0;
+}
+#header-text p {
+    margin: 5px 0 0 0;
+}
+
+h2 {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+/* 既存のナビゲーションCSSを統一感が出るように調整 */
+ul.ddmenu{
+    /* ... 既存CSS ... */
+    background-color: var(--main-color);
+}
+ul.ddmenu a{
+    background-color: var(--main-color);
+    /* ... 既存CSS ... */
+}
+ul.ddmenu a:hover{
+    background-color: #FFDDDD; /* ホバー時の明るい赤 */
+    color: var(--main-color);
+}
+
+/* フッターデザイン */
+footer {
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+footer a {
+    color: #FFDDDD;
+}
+
+
+
+/* 動画（mp4）のサイズ調整 */
+.video-container {
+    position: relative; /* 子要素のabsoluteの基準にする */
+    width: 100%;       /* 親要素（.grid-item）の幅いっぱいを使う */
+    padding-top: 56.25%; /* 9 ÷ 16 = 0.5625 (56.25%)。これが高さを決定する。 */
+    height: 0;         /* 実際に高さを0にし、paddingだけで高さを出す */
+    margin-bottom: 20px;
+}
+
+.video-container video {
+    position: absolute; /* 親要素（.video-container）に対して絶対配置 */
+    top: 0;
+    left: 0;
+    width: 100%;       /* 親要素の幅いっぱいに広げる */
+    height: 100%;      /* 親要素の高さいっぱいに広げる */
+    object-fit: cover; /* 動画が16:9でない場合、動画をはみ出させて表示領域を埋める */
+}
