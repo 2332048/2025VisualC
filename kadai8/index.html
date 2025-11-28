@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>料金シミュレーションツール</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <h1>イタリアンワインバー Chiba Tech コース料金計算ツール</h1>
+    <div id="calculator-app">
+        
+        <section>
+            <h2>1. コースと人数を選択</h2>
+            <label for="course">コース:</label>
+            <select id="course">
+                <option value="2980">カジュアルコース (¥2,980)</option>
+                <option value="3980">スタンダードコース (¥3,980)</option>
+                <option value="5980">プレミアムコース (¥5,980)</option>
+            </select>
+            <br><br>
+
+            <label for="person-count">人数:</label>
+            <input type="number" id="person-count" value="4" min="1" oninput="calculate()"> 人
+        </section>
+
+        <section>
+            <h2>2. オプションを選択</h2>
+            <input type="checkbox" id="nomihodai" value="2000" onclick="calculate()"> 
+            <label for="nomihodai">飲み放題追加 (+¥2,000/人)</label>
+            <br>
+            <input type="checkbox" id="surprise" value="1000" onclick="calculate()"> 
+            <label for="surprise">サプライズプレート (+¥1,000/卓)</label>
+        </section>
+        
+        <button onclick="calculate()">料金を計算する</button>
+
+        <section id="result-area">
+            <h2>3. 計算結果</h2>
+            <p>合計金額 (税抜): <span id="total-price-tax-excluded">0</span> 円</p>
+            <p style="font-size: 1.5em; font-weight: bold;">
+                合計金額 (税込): <span id="total-price">0</span> 円
+            </p>
+            <p>一人あたりの支払額 (税込): <span id="per-person-price">0</span> 円</p>
+        </section>
+    </div>
+
+    <script src="script.js"></script> 
+</body>
+</html>
