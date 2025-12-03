@@ -1,0 +1,212 @@
+/* === ベーススタイル (共通) === */
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* ナビゲーションメニュー */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* アニメーション1: マウスオーバーで下線が伸びる (CSS Transition) */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* メインコンテンツエリア */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 300px; /* PCレイアウト: メイン + サイドバー */
+    gap: 30px;
+}
+
+main {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+aside {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+/* 画像コンテナ */
+.image-box {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* アニメーション2: 画像のズームアニメーション (CSS Transform) */
+.image-content {
+    width: 100%;
+    height: 100%;
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: transform 0.5s ease;
+}
+
+.image-box:hover .image-content {
+    transform: scale(1.1);
+}
+
+/* アニメーション3: スクロールでフェードインする要素 (JavaScript連携) */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.fade-in-section:last-child {
+    border-bottom: none;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+button.action-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button.action-btn:hover {
+    background-color: #555;
+}
+
+button.action-btn:active {
+    transform: scale(0.95);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* === レスポンシブ設定 (スマホ・タブレット向け) === */
+/* 幅が768px以下の場合に適用されるCSS (PDF p.32参照) */
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* 1カラムにする */
+    }
+
+    nav ul {
+        display: none; /* 通常メニューを隠す */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #444;
+        padding: 10px 0;
+    }
+
+    nav ul.active {
+        display: flex; /* ボタンが押されたら表示 (JSで制御) */
+        animation: slideDown 0.3s ease-out;
+    }
+
+    nav ul li {
+        margin: 0;
+        text-align: center;
+    }
+
+    nav a {
+        display: block;
+        padding: 15px;
+    }
+    
+    /* サイドバーの表示順序を下げるなどの調整も可能 */
+    aside {
+        order: 2; 
+    }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

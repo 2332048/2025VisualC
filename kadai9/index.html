@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビジュアルコンテンツデザイン課題</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <main>
+        <section class="fade-in-section">
+            <h2>レスポンシブデザインの実践</h2>
+            <p>このページはCSSメディアクエリを使用して作成<br>ウィンドウ幅を狭めると、レイアウトが2カラムから1カラムに変化する</p>
+            <div class="image-box">
+                <div class="image-content">Mouse Over Me!</div>
+            </div>
+            <p>上のボックスにマウスを乗せると、CSS transformによる拡大アニメーションが実行</p>
+        </section>
+
+        <section class="fade-in-section">
+            <h2>GIFアニメーションの実装</h2>
+            <p>これは猫です</p>
+            
+            <!-- GIF表示エリア -->
+            <div style="text-align: center; background-color: #fff; border: 2px dashed #ccc; padding: 20px; margin: 10px 0;">
+                   
+                <img src="cat.gif" alt="猫">
+              
+            </div>
+        </section>
+
+        <section class="fade-in-section">
+            <h2>ポップアップ</h2>
+            <button class="action-btn" onclick="alert('クリックされました！')">Click Me</button>
+        </section>
+    </main>
+
+    <aside class="fade-in-section">
+        <h3>サイドバー</h3>
+        <p>PC表示では右側，スマホ表示では下に配置</p>
+        <ul>
+            <li>もくじ</li>
+            <li>カテゴリー1</li>
+            <li>アーカイブ</li>
+        </ul>
+    </aside>
+</div>
+
+<!-- JavaScriptファイルの読み込み -->
+<script src="script.js"></script>
+
+</body>
+</html>
